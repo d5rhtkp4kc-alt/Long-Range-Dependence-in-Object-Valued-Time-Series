@@ -728,18 +728,15 @@ if (length(rdata_files) == 0) {
 
 cat(sprintf("Found %d replication files. Aggregating...\n", length(rdata_files)))
 
-# Load into an isolated environment to prevent global overwrites
 load_rep <- function(file_path) {
   env <- new.env()
   load(file_path, envir = env)
   return(env$output_rep)
 }
 
-# Bind into a single master dataframe
 simulation_results <- do.call(rbind, lapply(rdata_files, load_rep))
 validate_simulation_results(simulation_results)
 
-# Execute identical output pipeline from the original main_0.R code
 cat("Generating summaries and CSV tables...\n")
 output <- write_outputs(simulation_results, output_directory)
 

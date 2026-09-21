@@ -648,10 +648,7 @@ results <- estimate_family(
 
 
 print(results$estimate)
-#.      Ratio  LogSlope
-#Raw 0.1977376 0.1912929
-#BC  0.2609682 0.2538511
-#FP  0.2669306 0.2594035
+
 
 energy_full_estimate <- results$estimate
 energy_D_full <- D_full
